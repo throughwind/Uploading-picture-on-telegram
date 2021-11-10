@@ -3,15 +3,15 @@ from pathlib import Path
 
 
 
-def get_pictures_url(request_url):
-    response = requests.get(request_url)
+def get_spacex_pictures_url(request_spacex_url):
+    response = requests.get(request_spacex_url)
     response.raise_for_status()
 
     return response.json()["links"]["flickr_images"]
 
 
-def uploade_pictures(urls):
-    for i, pictures_url in enumerate(urls):
+def fetch_spacex_last_launch(spasex_pictures_urls):
+    for i, pictures_url in enumerate(spasex_pictures_urls):
         response = requests.get(pictures_url)
         response.raise_for_status()
 
@@ -25,8 +25,6 @@ def uploade_pictures(urls):
 
 if __name__ == "__main__":
     Path("images").mkdir(parents=True, exist_ok=True)
-    
-    # url = "https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg"
-    request_url = "https://api.spacexdata.com/v3/launches/67"
-    urls = get_pictures_url(request_url)
-    uploade_pictures(urls)
+    request_spacex_url = "https://api.spacexdata.com/v3/launches/67"
+    spasex_pictures_urls = get_spacex_pictures_url(request_spacex_url)
+    fetch_spacex_last_launch(spasex_pictures_urls)
