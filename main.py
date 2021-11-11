@@ -1,10 +1,14 @@
 import requests
+import telegram as tg
 import os
 from pathlib import Path
 from urllib.parse import urlsplit
 from dotenv import load_dotenv
 from datetime import datetime
 
+
+def send_tg_messedge():
+    return bot.send_message(chat_id=tg_chat_id, text="Hi")
 
 
 def get_spacex_pictures_url(spacex_api_url):
@@ -92,14 +96,18 @@ def fetch_spacex_last_launch(spasex_pictures_urls):
 
 if __name__ == "__main__":
     load_dotenv()
-    token_api_nasa = os.getenv("NASA_API_TOKEN")
     Path("images").mkdir(parents=True, exist_ok=True)
+    token_api_nasa = os.getenv("NASA_API_TOKEN")
+    tg_token = os.getenv("TG_TOKEN")
+    tg_chat_id = os.getenv("CHAT_ID")
+    bot = tg.Bot(token=tg_token)
     spacex_api_url = "https://api.spacexdata.com/v3/launches/67"
     nasa_api_url = "https://api.nasa.gov/planetary/apod"
     nasa_api_epic_url = "https://api.nasa.gov/EPIC/api/natural/images/"
     spasex_pictures_urls = get_spacex_pictures_url(spacex_api_url)
     nasa_picture_urls = get_nasa_picture_urls(nasa_api_url)
     nasa_epic_urls = get_urls_nasa_epic(nasa_api_epic_url)
-    fetch_spacex_last_launch(spasex_pictures_urls)
-    fetch_nasa_pictures(nasa_picture_urls)
-    fetch_nasa_epic_photo(nasa_epic_urls)
+    send_tg_messedge()
+    #fetch_spacex_last_launch(spasex_pictures_urls)
+    #fetch_nasa_pictures(nasa_picture_urls)
+    #fetch_nasa_epic_photo(nasa_epic_urls)
