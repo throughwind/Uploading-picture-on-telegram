@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 from datetime import datetime
 
 
-def send_tg_messedge():
-    return bot.send_message(chat_id=tg_chat_id, text="Hi")
+def send_photo():
+    return bot.send_document(chat_id=tg_chat_id, document=open('images/epic1.png', 'rb'))
 
 
 def get_spacex_pictures_url(spacex_api_url):
@@ -107,7 +107,7 @@ if __name__ == "__main__":
     spasex_pictures_urls = get_spacex_pictures_url(spacex_api_url)
     nasa_picture_urls = get_nasa_picture_urls(nasa_api_url)
     nasa_epic_urls = get_urls_nasa_epic(nasa_api_epic_url)
-    send_tg_messedge()
+    send_photo()
     #fetch_spacex_last_launch(spasex_pictures_urls)
     #fetch_nasa_pictures(nasa_picture_urls)
     #fetch_nasa_epic_photo(nasa_epic_urls)
