@@ -2,7 +2,6 @@ import requests
 from filemane_extension import get_filename_extension
 
 
-
 def get_spacex_pictures_url(spacex_api_url):
     response = requests.get(spacex_api_url)
     response.raise_for_status()
@@ -25,3 +24,4 @@ def fetch_spacex_last_launch(spasex_pictures_urls):
 if __name__ == '__main__':
     spacex_api_url = "https://api.spacexdata.com/v3/launches/67"
     spasex_pictures_urls = get_spacex_pictures_url(spacex_api_url)
+    fetch_spacex_last_launch(spasex_pictures_urls)
