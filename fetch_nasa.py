@@ -5,7 +5,6 @@ from datetime import datetime
 from filemane_extension import get_filename_extension
 
 
-
 def get_nasa_picture_urls(nasa_api_url):
     params = {
         "start_date": "2021-10-01",
@@ -74,3 +73,4 @@ if __name__ == "__main__":
     nasa_api_epic_url = "https://api.nasa.gov/EPIC/api/natural/images/"
     nasa_picture_urls = get_nasa_picture_urls(nasa_api_url)
     nasa_epic_urls = get_urls_nasa_epic(nasa_api_epic_url)
+    fetch_nasa_pictures(nasa_picture_urls)
