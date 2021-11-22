@@ -11,15 +11,13 @@ def get_spacex_pictures_url(spacex_api_url):
 
 
 def fetch_spacex_last_launch(spasex_pictures_urls):
-    for i, url in enumerate(spasex_pictures_urls):
+    for i, url in enumerate(spasex_pictures_urls, start=1):
         response = requests.get(url)
         response.raise_for_status()
 
-        filename = f"images/spacex{i + 1}{get_filename_extension(url)}"
+        filename = f"images/spacex{i}{get_filename_extension(url)}"
         with open(filename, 'wb') as file:
             file.write(response.content)
-
-    return file
 
 
 if __name__ == '__main__':
