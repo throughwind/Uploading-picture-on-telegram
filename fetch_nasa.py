@@ -6,7 +6,7 @@ from datetime import datetime
 from filemane_extension import get_filename_extension
 
 
-def get_nasa_picture_urls(nasa_api_url):
+def get_nasa_picture_urls(nasa_api_url, token_api_nasa):
     params = {
         "start_date": "2021-10-01",
         "end_date": "2021-11-01",
@@ -14,13 +14,13 @@ def get_nasa_picture_urls(nasa_api_url):
 }
     response = requests.get(nasa_api_url, params=params)
     response.raise_for_status()
-    urls_list = [url.get("hdurl") for url in response.json()]
-    url_photo = [url for url in urls_list if url != None]
+    urls = [url.get("hdurl") for url in response.json()]
+    url_photo = [url for url in urls if url != None]
 
     return url_photo
 
 
-def get_urls_nasa_epic(nasa_api_epic_url):
+def get_urls_nasa_epic(nasa_api_epic_url, token_api_nasa):
     params = {
         "api_key": token_api_nasa
     }
@@ -44,26 +44,23 @@ def fetch_nasa_epic_photo(nasa_epic_urls):
     params = {
         "api_key": token_api_nasa
     }
-    for i, url in enumerate(nasa_epic_urls):
+    for i, url in enumerate(nasa_epic_urls, start=1):
         response = requests.get(url, params=params)
         response.raise_for_status()
-        filename = f"images/epic{i + 1}.png"
+        filename = f"images/epic{i}.png"
         with open(filename, 'wb') as file:
             file.write(response.content)
 
-    return file
 
 
 def fetch_nasa_pictures(nasa_picture_urls):
-    for i, url in enumerate(nasa_picture_urls):
+    for i, url in enumerate(nasa_picture_urls, start=1):
         response = requests.get(url)
         response.raise_for_status()
 
-        filename = f"images/nasa{i + 1}{get_filename_extension(url)}"
+        filename = f"images/nasa{i}{get_filename_extension(url)}"
         with open(filename, 'wb') as file:
             file.write(response.content)
-
-    return file
 
 
 if __name__ == "__main__":
