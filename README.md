@@ -49,8 +49,8 @@ URL адрес для запроса `https://api.spacexdata.com/v3/launches/lat
 Модуль предназначен для скачивания картинок космоса с сайта проекта [NASA](https://api.nasa.gov).
 
 API использует для запросов два адреса:
-- URL для скачивания основных фотографий `https://api.nasa.gov/planetary/apod`
-- URL для скачивания снимков Земли с космоса `https://api.nasa.gov/EPIC/api/natural/images/`.
+- URL для скачивания основных фотографий `https://api.nasa.gov/planetary/apod`;
+- URL для скачивания снимков Земли с космоса `https://api.nasa.gov/EPIC/api/natural/images/`;
 
 ## Модуль filename_extension.py
 
@@ -66,6 +66,39 @@ API использует для запросов два адреса:
 
 Так же необходимо в файл `.env` добавить  параметр `TIME_SLEEP` равный переодичностью публикации фотографий (задается в секундах, `24 часа это 86400 секунд`).
 
-## Цель проекта
+# Как использовать
+
+Для начала активируем виртуальное окружение
+```
+% source env/bin/activate   
+```
+По результату получим вывод терминала похожий на:
+```
+(venv) loade_pictures %
+```
+## Качаем картинки с NASA
+
+Введем команду для скачивания картинок c сайта NASA
+```
+(venv) loade_pictures % python fetch_nasa.py
+```
+В итоге в папке проекта появится каталог `images` со скачанными картинками.
+
+## Качаем картинки SPACE-X
+
+Таким же образом можно скачать картинки SPACE-X
+```
+(venv) loade_pictures % python fetch_spacex.py
+```
+
+## Запускаем телеграмм бота и публикуем картинки в телеграмм
+
+```
+(venv) loade_pictures % python send_photo_tg_bot.py
+```
+
+Have fun!
+
+# Цель проекта
 
 Код написан в образовательных целях на онлайн-курсе для python-разработчиков [dvmn.org](https://dvmn.org/).
