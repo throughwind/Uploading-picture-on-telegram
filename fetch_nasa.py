@@ -11,11 +11,11 @@ def get_nasa_picture_urls(nasa_api_url, token_api_nasa):
         "start_date": "2021-10-01",
         "end_date": "2021-11-01",
         "api_key": token_api_nasa
-}
+    }
     response = requests.get(nasa_api_url, params=params)
     response.raise_for_status()
     urls = [url.get("hdurl") for url in response.json()]
-    url_photo = [url for url in urls if url != None]
+    url_photo = [url for url in urls if url]
 
     return url_photo
 
@@ -69,6 +69,6 @@ if __name__ == "__main__":
     token_api_nasa = os.getenv("NASA_API_TOKEN")
     nasa_api_url = "https://api.nasa.gov/planetary/apod"
     nasa_api_epic_url = "https://api.nasa.gov/EPIC/api/natural/images/"
-    nasa_picture_urls = get_nasa_picture_urls(nasa_api_url)
-    nasa_epic_urls = get_urls_nasa_epic(nasa_api_epic_url)
+    nasa_picture_urls = get_nasa_picture_urls(nasa_api_url, token_api_nasa)
+    nasa_epic_urls = get_urls_nasa_epic(nasa_api_epic_url, token_api_nasa)
     fetch_nasa_pictures(nasa_picture_urls)
