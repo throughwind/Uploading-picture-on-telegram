@@ -4,13 +4,12 @@ import time
 from dotenv import load_dotenv
 
 
-
 def send_photo_in_tg(photos, time_sleep):
     while True:
         for photo in photos:
             with open(f"images/{photo}", 'rb') as file:
                 bot.send_photo(chat_id=tg_chat_id, photo=file)
-                time.sleep(time_sleep)
+            time.sleep(time_sleep)
 
 
 if __name__ == "__main__":
@@ -19,5 +18,5 @@ if __name__ == "__main__":
     bot = tg.Bot(token=tg_token)
     time_sleep = int(os.getenv("TIME_SLEEP"))
     photos = os.listdir("images")
-    tg_chat_id = os.getenv("CHAT_ID")
+    tg_chat_id = os.getenv("TELEGRAM_CHAT_ID")
     send_photo_in_tg(photos, time_sleep)

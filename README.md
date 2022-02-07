@@ -74,13 +74,13 @@ API использует для запросов два адреса:
 ```
 По результату получим вывод терминала похожий на:
 ```
-(venv) loade_pictures %
+(venv) uploade_pictures %
 ```
 ## Качаем картинки с NASA
 
 Введем команду для скачивания картинок c сайта NASA
 ```
-(venv) loade_pictures % python fetch_nasa.py
+(venv) uploade_pictures % python fetch_nasa.py
 ```
 В итоге в папке проекта появится каталог `images` со скачанными картинками.
 
@@ -88,13 +88,13 @@ API использует для запросов два адреса:
 
 Таким же образом можно скачать картинки SPACE-X
 ```
-(venv) loade_pictures % python fetch_spacex.py
+(venv) uploade_pictures % python fetch_spacex.py
 ```
 
 ## Запускаем телеграмм бота и публикуем картинки в телеграмм
 
 ```
-(venv) loade_pictures % python send_photo_tg_bot.py
+(venv) uploade_pictures % python send_photo_tg_bot.py
 ```
 
 Have fun!
