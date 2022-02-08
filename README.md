@@ -16,7 +16,7 @@ source venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
-Для скрытия токена используйте файл `.env` и библиотеку `python_dotenv`.
+Для скрытия токена и иной конфиденциальной информации используйте файл `.env` и библиотеку `python_dotenv`.
 
 Python3 должен быть уже установлен. 
 Затем используйте `pip` (или `pip3`, если есть конфликт с Python2) для установки зависимостей:
@@ -74,13 +74,13 @@ API использует для запросов два адреса:
 ```
 По результату получим вывод терминала похожий на:
 ```
-(venv) uploade_pictures %
+(venv) upload_pictures %
 ```
 ## Качаем картинки с NASA
 
 Введем команду для скачивания картинок c сайта NASA
 ```
-(venv) uploade_pictures % python fetch_nasa.py
+(venv) upload_pictures % python fetch_nasa.py
 ```
 В итоге в папке проекта появится каталог `images` со скачанными картинками.
 
@@ -88,13 +88,13 @@ API использует для запросов два адреса:
 
 Таким же образом можно скачать картинки SPACE-X
 ```
-(venv) uploade_pictures % python fetch_spacex.py
+(venv) upload_pictures % python fetch_spacex.py
 ```
 
 ## Запускаем телеграмм бота и публикуем картинки в телеграмм
 
 ```
-(venv) uploade_pictures % python send_photo_tg_bot.py
+(venv) upload_pictures % python send_photo_tg_bot.py
 ```
 
 Have fun!
